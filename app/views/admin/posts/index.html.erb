@@ -1,0 +1,19 @@
+<h1>Blog post list</h1>
+
+<% @posts.each do |post| %>
+
+    <tr>
+      <td><%= post.title %>
+      <td> </td>Created: <%=  post.created_at.strftime('%m/%d/%Y %H:M') %>  </td>
+      <td><%= link_to 'Show', admin_post_path(post) %></td>
+      <td><%= link_to 'Edit', edit_admin_post_path(post) %></td>
+      <td><%= link_to 'Destroy', admin_post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><br /> <%= post.content %><br />  </td>
+    </tr>
+
+<% end %>
+<br />
+
+
+<%= link_to 'New Blog post', new_admin_post_path, :class => "btn btn-primary" %><br />
+<%= link_to "Cancel", root_path, :class => "btn" %>

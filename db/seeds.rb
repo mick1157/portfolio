@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+# Populate the post db  --- must run Rake db:seeds      run rake db:reset to empty database
+5.times do |i|
+  Post.create({:title => "post #{i}", :content => 'Lorem ipsum'})
+end

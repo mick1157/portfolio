@@ -45,4 +45,43 @@ describe BlogController do
 
   end
 
+  describe 'PUT to update' do
+
+    let!(:post) { create(:post) }
+    before { put :update, id: post.id, post: {title: 'Test 123',
+                                                  content: 'Test for update'}}
+
+    it { should redirect_to blog_path}
+
+    it "should have a new title" do
+      assigns(:post).title.should == "Test 123"
+    end
+
+    it "should have a new content" do
+      assigns(:post).content.should == "Test Update Content"
+    end
+
+  end
+
+
+  # GET /blog/new   -> BlogController#new
+  describe "GET to new" do
+    before { get :new }
+    it "should assign a new post" do
+      assigns(:post).new_record? == true
+    end
+  end
+
+
+  # GET /blog/new   -> BlogController#create
+  describe "GET to create" do
+    before { get :create, post: {title: 'Test Post',
+                                  content: 'Test Post'} }
+    it "should create a new post with title" do
+      assigns(:post).new_record? == true
+    end
+  end
+
+
+
 end

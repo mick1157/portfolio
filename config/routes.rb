@@ -1,5 +1,30 @@
 Portfolio::Application.routes.draw do
 
+  get "users/index"
+
+  get "users/show"
+
+  get "users/edit"
+
+  get "users/destroy"
+
+  get "home/index"
+  get "home" => "home#index"
+  root :to => "home#index"
+
+  get "log_in" => "sessions#new", :as => "log_in"
+  get "log_out" => "sessions#destroy", :as => "log_out"
+
+  get "sign_up" => "users#new", :as => "sign_up"
+
+  resources :sessions
+  resources :blog
+
+  namespace :admin do
+    resources :posts
+    resources :users
+  end
+
   # GET :blog -> blog#index
   # GET :blog/:id -> blog#show
   # GET :blog/:id/edit -> blog#edit
@@ -7,7 +32,7 @@ Portfolio::Application.routes.draw do
   # GET :blog/new -> blog#new
   # POST :blog -> blog#create
   # DELETE :blog -> blog#destroy
-  resources :blog
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,16 @@
+<h1>Show User</h1>
+
+<p id="notice"><%= notice %></p>
+
+<div class='title'>
+  Email: <%= @user.email %>
+  Created: <%= @user.created_at.strftime('%m/%d/%Y %H:M') %>
+</div>
+<div class='title'>
+  Administrator authority: <%= @post.admin_auth %>
+</div>
+
+<br />
+<%= link_to 'Edit', edit_admin_post_path(@post) %> <br />
+<%= link_to 'Back', admin_posts_path %>   <br />
+<%= link_to 'Return to Home', root_path %>
