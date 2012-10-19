@@ -1,12 +1,12 @@
 Portfolio::Application.routes.draw do
 
-  get "users/index"
+  get "projects/index"
 
-  get "users/show"
+  get "projects/show"
 
-  get "users/edit"
+  get "projects/edit"
 
-  get "users/destroy"
+  get "projects/new"
 
   get "home/index"
   get "home" => "home#index"
@@ -18,11 +18,12 @@ Portfolio::Application.routes.draw do
   get "sign_up" => "users#new", :as => "sign_up"
 
   resources :sessions
-  resources :blog
+  resources :users
 
   namespace :admin do
     resources :posts
     resources :users
+    resources :projects
   end
 
   # GET :blog -> blog#index

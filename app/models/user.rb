@@ -1,6 +1,12 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password_hash, :password_salt, :password, :password_confirmation
+  attr_accessible :email, :password_hash, :password_salt, :admin_auth, :password, :password_confirmation
 
+  def email; end
+  def email=(email); end
+
+#
+#  need to validate that admin_auth only has either a yes or a no  ???
+#
   before_save :encrypt_password
 
   attr_accessor :password

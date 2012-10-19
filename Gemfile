@@ -32,6 +32,9 @@ end
    gem 'bcrypt-ruby', require: 'bcrypt'
 
 
+  gem 'carrierwave'       # for managing  pictures
+  gem 'rmagick'            # for manipulating a pictures attributes
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
