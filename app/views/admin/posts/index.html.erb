@@ -1,12 +1,12 @@
 <h1>Blog post list</h1>
-<table>
+<table class="table table-striped">
   <tr>
-    <th>-- Title --</th>
+    <th></th>
+    <th></th>
+    <th></th>
     <th>Created</th>
-    <th>Published</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Publish at</th>
+    <th>-- Title --</th>
     <th>Blog post</th>
   </tr>
 
@@ -14,18 +14,18 @@
   <% @posts.each do |post| %>
 
     <tr>
-      <td><%= post.title %>
+      <div class="btn-group">
+        <td><%= link_to 'Show', admin_post_path(post), :class => "btn btn-info btn-mini" %></td>
+        <td><%= link_to 'Edit', edit_admin_post_path(post), :class => "btn btn-mini" %></td>
+        <td><%= link_to "Delete", admin_post_path(post), :class => "btn btn-mini btn-danger", method: :delete, confirm: "Are you sure?" %></td>
+      </div>
       <td><%=  post.created_at.strftime('%m/%d/%Y %H:M') %></td>
-
       <% if post.publish_at %>
          <td><%=  post.publish_at.strftime('%m/%d/%Y %H:M') %>  </td>
       <% else %>
          <td>&nbsp;</td>
       <% end %>
-
-      <td><%= link_to 'Show', admin_post_path(post) %></td>
-      <td><%= link_to 'Edit', edit_admin_post_path(post) %></td>
-      <td><%= link_to "Delete", admin_post_path(post), method: :delete, confirm: "Are you sure?" %></td>
+      <td><%= post.title %>
       <td><%= post.content %></td>
     </tr>
 
@@ -33,5 +33,8 @@
 
  </table>
 <br />
-<%= link_to 'New Blog post', new_admin_post_path, :class => "btn btn-primary" %><br />
-<%= link_to "Cancel", root_path, :class => "btn" %>
+
+<div class="btn-group">
+    <%= link_to 'New Blog post', new_admin_post_path, :class => "btn btn-link" %><br />
+    <%= link_to "Cancel", root_path, :class => "btn btn-link" %>
+</div>

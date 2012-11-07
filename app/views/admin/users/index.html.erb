@@ -1,25 +1,33 @@
 <h1>Listing users</h1>
-<table>
+<table class="table table-striped">
   <tr>
-    <th>-- Email --</th>
+    <th></th>
+    <th></th>
+    <th></th>
     <th><p>Administration</p><p>Authority</p></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>-- Email --</th>
   </tr>
 
   <% @users.each do |user| %>
       <tr>
+        <div class="btn-group">
+          <td><%= link_to 'Show', admin_user_path(user), :class => "btn btn-mini btn-info" %></td>
+          <td><%= link_to 'Edit', edit_admin_user_path(user), :class => "btn btn-mini" %></td>
+          <td><%= link_to 'Destroy', admin_user_path(user), :class => "btn btn-mini btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </div>
+        <% if user.admin_auth %>
+            <td><i class="icon-ok">Yes</i></td>
+        <% else %>
+            <td>&nbsp;</td>
+        <% end %>
         <td><%= user.email %></td>
-        <td><%= user.admin_auth %></td>
-        <td><%= link_to 'Show', admin_user_path(user) %></td>
-        <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
-        <td><%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
 </table>
 
 <br />
+<div class="btn-group">
+  <%= link_to 'New User', new_admin_user_path, :class => "btn btn-link" %>   <br />
+  <%= link_to "Cancel", root_path, :class => "btn btn-link" %>
+</div>
 
-<%= link_to 'New User', new_admin_user_path %>   <br />
-<%= link_to "Cancel", root_path, :class => "btn" %>

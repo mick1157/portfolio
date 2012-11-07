@@ -9,3 +9,6 @@
 5.times do |i|
   Post.create({:title => "post #{i}", :content => 'Lorem ipsum'})
 end
+
+
+# User.create({:email => 'mick9@gmail.com', password_confirmation => 'mick9@gmail.com' })

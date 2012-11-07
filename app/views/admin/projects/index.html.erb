@@ -1,11 +1,12 @@
 <h1>Project list</h1>
-<table>
+<table class="table table-striped">
   <tr>
-    <th>-- Title --</th>
+    <th></th>
+    <th></th>
+    <th></th>
     <th>Created</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Picture</th>
+    <th>-- Title --</th>
     <th> -- Project Description -- </th>
   </tr>
 
@@ -13,12 +14,14 @@
   <% @projects.each do |project| %>
 
       <tr>
-        <td><%= project.title %>
+        <div class="btn-group">
+          <td><%= link_to 'Show', admin_project_path(project), :class => "btn btn-mini btn-info" %></td>
+          <td><%= link_to 'Edit', edit_admin_project_path(project), :class => "btn btn-mini" %></td>
+          <td><%= link_to "Delete", admin_project_path(project), :class => "btn btn-mini btn-danger", method: :delete, confirm: "Are you sure?" %></td>
+        </div>
         <td><%=  project.created_at.strftime('%m/%d/%Y %H:M') %></td>
         <td><%= image_tag project.image_url(:thumb) %> </td>
-        <td><%= link_to 'Show', admin_project_path(project) %></td>
-        <td><%= link_to 'Edit', edit_admin_project_path(project) %></td>
-        <td><%= link_to "Delete", admin_project_path(project), method: :delete, confirm: "Are you sure?" %></td>
+        <td><%= project.title %>
         <td><%= project.description %></td>
       </tr>
 
@@ -26,6 +29,10 @@
 
 </table>
 <br />
-<%= link_to 'New Project', new_admin_project_path, :class => "btn btn-primary" %><br />
-<%= link_to "Cancel", root_path, :class => "btn" %>
+<div class="btn-group">
+  <%= link_to 'New Project', new_admin_project_path, :class => "btn btn-link" %><br />
+  <%= link_to "Cancel", root_path, :class => "btn btn-link" %>
+</div>
+
+
 
